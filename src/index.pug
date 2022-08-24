@@ -1,0 +1,15 @@
+doctype html
+html(lang="en")
+	head
+	include('html/head.pug', {
+		"title": "Dubai"
+	})
+	body
+		include html/sprite.pug
+		.wrapper
+			include html/header.pug
+			main.page
+				include html/intro.pug
+			include html/footer.pug
+		script(src="js/app.js")
+

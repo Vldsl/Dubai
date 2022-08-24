@@ -1,0 +1,17 @@
+header.header#header
+	.header__container
+		a.header__logo.logo(href="#")
+			svg.logo__icon
+				use(xlink:href="#logo")
+		nav.header__menu.menu
+			button.menu__icon(type="button", aria-label="Open menu")
+				span
+			.menu__body
+				ul.menu__list
+					li.menu__item
+						a.menu__link(href="#") Rooms
+					li.menu__item
+						a.menu__link(href="#") Reservation
+					li.menu__item
+						a.menu__link(href="#") Contacs
+		a.header__link.page-link(href="#") Get Started

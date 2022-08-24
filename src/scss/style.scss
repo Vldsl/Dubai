@@ -1,0 +1,53 @@
+@use "sass:math";
+@use "sass:map";
+
+@import "vars";
+@import "mixins";
+/*--------------------*/
+/*** Null ***/
+@import "null";
+/*--------------------*/
+/*** Fonts ***/
+@import "fonts";
+@import "fonts/icons";
+
+/*--------------------*/
+
+body {
+  position: relative;
+  font-family: $font-primary;
+  font-style: normal;
+  text-align: left;
+  @include font-source-sans(rem($fontSize), 1.5, 400, var(--main-color));
+  background-color: var(--bg-color);
+
+  &.lock {
+    overflow: hidden;
+    touch-action: none;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+
+  > main {
+    flex: 1 1 auto;
+  }
+}
+
+[class*="__container"] {
+  width: 100%;
+  max-width: rem(1140);
+  margin: auto;
+  padding: 0 rem(15);
+}
+
+.page {}
+
+@import "components/header";
+@import "components/intro";
+@import "components/footer";
