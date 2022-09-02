@@ -1,29 +1,44 @@
-/* -------------------------------- */
-//Percent
+// VH
+@function vh($px, $from: 700) {
+  //  (60 / 100vh) * 100
+  $result: (math.div($px, $from) * 100) + vh;
+
+  //  (60 * 100) / 100vh
+  // $result: math.div(($px * 100), $from);
+
+  @return $result;
+}
+
+// Percent
 @function percent($px, $from) {
   $result: math.div($px, $from) * 100%;
+
   @return $result;
 }
 
-//REM
+// REM
 @function rem($px) {
   $result: math.div($px, 16) + rem;
+
   @return $result;
 }
 
-//EM
+// EM
 @function em($px, $current: 16) {
   $result: math.div($px, $current) + em;
+
   @return $result;
 }
 
-//line height
+// Line height
 @function llh($px, $current: 16) {
   $result: math.div($px, $current);
+
   @return $result;
 }
-/* -------------------------------- */
-@mixin font-source-sans($size: false, $lh: false, $weight: 400, $colour: false) {
+
+// Font
+@mixin font-source-sans($size: false, $lh: false, $weight: false, $colour: false) {
   @if $size {
     font-size: $size;
   }
@@ -41,52 +56,36 @@
   }
 }
 
-/* -------------------------------- */
+// Media
 $breakpoints: (
-  "phone": em(320),
-  "phone-wide": em(480),
-  "phablet": em(600),
-  "tablet-small": em(768),
-  "tablet": em(991),
-  "tablet-wide": em(1024),
-  "desktop": em(1248),
-  "desktop-wide": em(1440),
+  "phone": em(319.9),
+  "phone-wide": em(479.9),
+  "phablet": em(599.9),
+  "tablet-small": em(767.9),
+  "tablet": em(990.9),
+  "tablet-wide": em(1023.9),
+  "landscape": em(1247.9),
+  "landscape-wide": em(1439.9),
+  "desktop": em(1919.9),
 );
 
-@mixin mq($width, $type: min, $maxWidth: false) {
+@mixin mq($width, $type: min, $max-width: false) {
   @if map-has-key($breakpoints, $width) {
-    $width: map-get($breakpoints, $width);
-    $maxWidth: map-get($breakpoints, $maxWidth);
-    @if $type ==min or $type ==max {
+    $width: map.get($breakpoints, $width);
+    $max-width: map.get($breakpoints, $max-width);
+
+    @if $type == min or $type == max {
       @media only screen and (#{$type}-width: $width) {
         @content;
       }
-    }
-    @else if $type ==range {
-      @media (min-width: $width) and (max-width: $maxWidth) {
+    } @else if $type == range {
+      @media (min-width: $width) and (max-width: $max-width) {
         @content;
       }
+    } @else {
+      @error "Не указано значение для `#{$type}`";
     }
-    @else {
-      @error 'Не указано значение для `#{$type}`';
-    }
-  }
-  @else {
-    @error 'Не указано значение для `#{$breakpoints}`';
+  } @else {
+    @error "Не указано значение для `#{$breakpoints}`";
   }
 }
-
-
-// @include mq("desktop-wide") {}
-
-// @include mq("desktop", range, "desktop-wide") {}
-
-// @include mq("tablet", range, "desktop") {}
-
-// @include mq("tablet-small", range, "tablet") {}
-
-// @include mq("phablet", range, "tablet-small") {}
-
-// @include mq("phone", range, "phablet") {}
-
-// @include mq("phone", max) {}

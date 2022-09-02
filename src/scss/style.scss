@@ -1,25 +1,18 @@
 @use "sass:math";
 @use "sass:map";
-
 @import "vars";
 @import "mixins";
-/*--------------------*/
-/*** Null ***/
 @import "null";
-/*--------------------*/
-/*** Fonts ***/
-@import "fonts";
+@import "fonts/fonts";
 @import "fonts/icons";
-
-/*--------------------*/
 
 body {
   position: relative;
   font-family: $font-primary;
   font-style: normal;
   text-align: left;
-  @include font-source-sans(rem($fontSize), 1.5, 400, var(--main-color));
-  background-color: var(--bg-color);
+  @include font-source-sans(rem($font-size), 1.5, 400, #fff);
+  background-color: #272727;
 
   &.lock {
     overflow: hidden;
@@ -41,9 +34,13 @@ body {
 
 [class*="__container"] {
   width: 100%;
-  max-width: rem(1140);
+  // max-width: rem(1140);
+  max-width: rem(1110);
   margin: auto;
-  padding: 0 rem(15);
+  // padding: 0 rem(15);
+  padding: 0 36px;
+  // padding: 0 58px;
+  // Для мобильных устройств оставлю padding в пикселях, думаю это хорошая идея, Так как если писать в rem то отступы ломают сайт, в итоге его трудно читать
 }
 
 .page {}
@@ -51,3 +48,166 @@ body {
 @import "components/header";
 @import "components/intro";
 @import "components/footer";
+
+.modals {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(39, 39, 39, 0.9);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 67px 138px 44px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #fff;
+
+  @include mq("tablet-small", max) {
+    padding: 67px 138px 44px;
+    width: 80%;
+
+    @media only screen and (max-height: em(699.9, 16)) {
+      width: 80%;
+      padding-top: min(67px, vh(67));
+      padding-right: 30px;
+      padding-bottom: min(44px, vh(44));
+      padding-left: 30px;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    right: -70px;
+    top: -50px;
+    width: rem(30);
+    height: rem(30);
+    background-image: url("./../img/close.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: transparent;
+
+    @include mq("tablet-small", max) {
+      right: 10px;
+      top: 10px;
+
+      @media only screen and (max-height: em(699.9, 16)) {
+        right: 10px;
+        top: 10px;
+      }
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem(7) 0;
+    font-family: $font-secondary;
+    font-weight: 700;
+    font-size: rem(48);
+    line-height: math.div(59, 48);
+    color: #000;
+
+    @include mq("tablet-small", max) {
+      font-size: rem(30);
+
+      @media only screen and (max-height: em(699.9, 16)) {
+      }
+    }
+  }
+
+  &__subtitle {
+    font-size: rem(14);
+
+    line-height: 23px;
+    color: #000;
+
+    @include mq("tablet-small") {
+      margin: 0 0 rem(20);
+      font-size: rem(20);
+
+    }
+
+    @include mq("tablet-small", max) {
+
+      @media only screen and (max-height: em(699.9, 16)) {
+      }
+    }
+  }
+}
+.form-callback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  // gap: 30px;
+  text-align: center;
+
+  &__input {
+    width: 100%;
+    padding: rem(10) 0;
+    border-bottom: 1px solid #929292;
+
+    font-family: $font-secondary;
+    font-size: rem(14);
+    line-height: math.div(19, 16);
+    color: #000;
+
+    & + & {
+      margin: rem(20) 0 0;
+    }
+
+    &:not(:first-of-type) {
+      margin: 0 0 rem(30) 0;
+      @include mq("tablet-small") {
+        margin: 0 0 rem(56) 0;
+      }
+    }
+
+    @include mq("tablet-small") {
+      font-size: rem(16);
+      padding: rem(15) 0;
+    }
+
+    @include mq("tablet-small", max) {
+
+      @media only screen and (max-height: em(699.9, 16)) {
+      }
+    }
+  }
+
+  &__btn {
+    padding: rem(16) rem(85);
+    font-weight: 600;
+    font-size: rem(18);
+    line-height: math.div(21, 18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #000;
+    background-color: #FCD54C;
+
+    @include mq("tablet-small", max) {
+      width: 100%;
+
+      @media only screen and (max-height: em(699.9, 16)) {
+      }
+    }
+  }
+}

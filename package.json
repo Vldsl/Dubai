@@ -10,13 +10,7 @@
     "zip": "gulp deployZIP --build",
     "deploy": "gulp deployFTP --build",
     "sprite": "gulp sprite",
-    "start": "npx tailwindcss -i ./src/scss/style.scss -o ./dist/css/style.css --watch",
     "prepare": "husky install"
-  },
-  "lint-staged": {
-    "*.js": "eslint",
-    "*.pug": "pug-lint",
-    "*.scss": "stylelint"
   },
   "author": "VLDSLV",
   "license": "ISC",
@@ -54,7 +48,6 @@
     "gulp-webpcss": "latest",
     "gulp-zip": "^5.1.0",
     "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "postcss": "^8.4.14",
     "pug-lint": "^2.6.0",
     "sass": "latest",

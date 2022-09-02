@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head></head>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">
+    <meta name="theme-color" content="#111111">
+    <link rel="shortcut icon" href="./img/favicon/favicon.svg">
+    <link rel="stylesheet" href="./css/normalize.css?_v=20220902164505">
+    <link rel="stylesheet" href="./css/style.css?_v=20220902164505">
+    <title>Dubai</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header" id="header">
+        <div class="header__inner"><a class="header__logo logo" href="#" style="background-image: url('./img/Header/Rectangle 14.png')">
+            <p class="logo__title">DubaiRealty</p>
+            <p class="logo__subtitle">Real Estate</p></a>
+          <div class="header__body">
+            <nav class="header__menu menu">
+              <button class="menu__icon" type="button" role="button" aria-label="Open menu"><span></span></button>
+              <div class="menu__body">
+                <ul class="menu__list">
+                  <li class="menu__item"><a class="menu__link" href="#">Buy</a><span class="menu__arrow arrow"></span>
+                    <ul class="menu__sublist sublist">
+                      <li class="sublist__item"><a class="sublist__link" href="#">Category number one</a></li>
+                      <li class="sublist__item"><a class="sublist__link" href="#">Apartments in Dubai</a></li>
+                      <li class="sublist__item"><a class="sublist__link" href="#">Category number twenty five</a></li>
+                    </ul>
+                  </li>
+                  <li class="menu__item"><a class="menu__link" href="#">Blog</a></li>
+                  <li class="menu__item"><a class="menu__link" href="#">Adout</a></li>
+                  <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+                </ul>
+                <button class="header__btn open-btn" type="button" role="button">Book a consultation</button>
+                <div class="header__box">
+                  <div class="header__toggle-lang toggle-lang">
+                    <button class="toggle-lang__btn" type="button" role="button">EN</button>
+                    <button class="toggle-lang__btn" type="button" role="button">RU</button>
+                  </div><a class="header__phone" href="tel:+55555552510">+5 (555) 555-25-10</a>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <main class="page"></main>
+    </div>
+    <div class="modals">
+      <div class="modal">
+        <button class="modal__btn" type="button" role="button" aria-label="Close modal window"></button>
+        <h3 class="modal__title">Leave your contacts</h3>
+        <p class="modal__subtitle">we will contact you within three hours</p>
+        <form class="modal__form form-callback">
+          <input class="form-callback__input" type="text" placeholder="Name">
+          <input class="form-callback__input" type="tel" placeholder="Phone">
+          <button class="form-callback__btn">Send</button>
+        </form>
+      </div>
+    </div>
+    <script src="js/app.js?_v=20220902164505"></script>
+  </body>
+</html>

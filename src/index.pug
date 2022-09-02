@@ -1,15 +1,29 @@
 doctype html
 html(lang="en")
-	head
-	include('html/head.pug', {
-		"title": "Dubai"
-	})
-	body
-		include html/sprite.pug
-		.wrapper
-			include html/header.pug
-			main.page
-				include html/intro.pug
-			include html/footer.pug
-		script(src="js/app.js")
+  head
+  include html/head.pug
+  body
+    include html/sprite.pug
+    .wrapper
+      include html/header.pug
+      main.page
+        include html/intro.pug
+      include html/footer.pug
+    .modals
+      .modal
+        button.modal__btn(type="button", role="button", aria-label="Close modal window")
+        h3.modal__title Leave your contacts
+        p.modal__subtitle we will contact you within three hours
+        form.modal__form.form-callback
+          input.form-callback__input(type="text", placeholder="Name")
+          input.form-callback__input(type="tel", placeholder="Phone")
+          button.form-callback__btn Send
+    script(src="js/app.js")
 
+//- Добавить Доступность с клавиатуры и для программ чтения с экрана
+//- Добавить единица измерения отступам для маленьких экранов отсносительно высоты, чтобы всё содержимое меню было видно сразу. ОТ 700px высоты и меньше
+//- Перевести отступы в проценты от ширины контейнера, если необходимо
+//- Всегда проверять область наведения на объект
+//- Всегда задавать логоттип через img
+
+//- Создать класс со стилями для кнопок
