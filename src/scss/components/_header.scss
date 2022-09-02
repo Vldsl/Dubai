@@ -1,72 +1,239 @@
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
+  // Попробовать сделать шапку без изначального позиционирования
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // z-index: 99;
 
   width: 100%;
-  padding: rem(20) 0;
+  min-height: rem(50);
+  background-color: #272727;
+
+  // ============================== Первое время использовать пиксели для этого паддинга
+  // padding: rem(15) 0 rem(18) 0;
+  padding: 15px 0 18px;
+
+  @include mq("tablet-small") {
+    padding: 15px 0 20px;
+  }
+  @include mq("desktop") {
+    padding: 20px 0 26px;
+  }
 
   &.fixed {
     position: fixed;
     padding: rem(10) 0;
-    background-color: var(--bg-color);
-    box-shadow: 0 0 10px 0 rgb(0 0 0 / 0.75);
-
-    @include mq("tablet-small", max) {
-      padding: 5% 0;
-    }
   }
 
-  &__container {
+  &__inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: rem(70);
+    width: 100%;
+    max-width: rem(1916);
+    margin: auto;
+    padding: 0 36px;
+
+    @include mq("tablet-small") {
+      padding: 0 38px;
+    }
+
+    @include mq("desktop") {
+      padding: 0 58px; //3.02%
+      gap: rem(30);
+    }
   }
 
   &__logo {
     position: relative;
     z-index: 5;
+
+    @include mq("desktop") {
+      flex: 0 1 12.5%;
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    @include mq("desktop") {
+      justify-content: space-between;
+      width: 100%;
+      max-width: rem(1110);
+    }
+
+    @include mq("tablet-small", range, "desktop") {
+      & > *:not(:last-child) {
+        margin: 0 rem(30) 0 0;
+      }
+    }
   }
 
   &__menu {}
 
-  &__link {
-    padding: rem(14) rem(16);
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: vh(12) vh(14);
+    @include font-source-sans(rem(14), 1.14, 600, #000);
+    text-align: center;
+    background-color: #fcd54c;
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+    @include mq("tablet-small") {
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: rgba($color: #fcd54c, $alpha: 0.8);
+        }
+      }
+    }
+
+    @include mq("tablet-small", range, "desktop") {
+      position: relative;
+      z-index: 5;
+      padding: rem(10) rem(12);
+      font-size: rem(12);
+      line-height: 1.16;
+    }
+
+    @include mq("tablet-small", max) {
+      margin: 0 auto rem(38);
+
+      @media only screen and (max-height: em(699.9, 16)) {
+        margin-bottom: vh(38);
+      }
+
+      @media only screen and (max-height: em(399.9, 16)) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  &__box {
+    display: flex;
+    @include mq("tablet-small") {
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    @include mq("tablet-small", range, "desktop") {
+      position: relative;
+      z-index: 5;
+    }
+
+    @include mq("desktop") {
+      flex: 0 1 12.5%;
+    }
+
+    @include mq("tablet-small", max) {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 40px;
+
+      @media only screen and (max-height: em(699.9, 16)) {
+        gap: vh(40);
+        flex-direction: row-reverse;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__phone {
+    font-family: $font-secondary;
+    @include font-source-sans(rem(16), 1.25, 600, #fff);
   }
 }
 
 .logo {
-  &__icon {
-    display: block;
-    width: rem(123);
-    height: rem(30);
+  padding: rem(6) 0 rem(11) rem(12);
+  background-repeat: no-repeat;
+  background-position: center left;
+  background-size: contain;
 
-    fill: var(--semi-color);
+  @include mq("tablet-small") {
+    padding: rem(11) 0 rem(6) rem(11);
+  }
+
+  @include mq("desktop") {
+    padding: rem(6) 0 rem(10) rem(15);
+  }
+
+  &__title {
+    font-family: $font-secondary;
+    @include font-source-sans(rem(18), 1.22, 700, #fff);
+
+    @include mq("tablet-small") {
+      margin: 0 0 rem(8) 0;
+      font-size: rem(20);
+      line-height: 1.2;
+    }
+
+    @include mq("desktop") {
+      margin: 0;
+      font-size: rem(28);
+      line-height: 1.21;
+    }
+  }
+
+  &__subtitle {
+    color: #fff;
+    font-size: rem(10);
+    line-height: 1.2;
+    opacity: 0.6;
+
+    @include mq("desktop") {
+      font-size: rem(11);
+      line-height: 1.18;
+    }
   }
 }
 
 .menu {
   &__body {
-    @include mq("tablet-small", max) {
+    @include mq("desktop", max) {
       position: fixed;
       top: -100%;
       right: 0;
-
+      z-index: 2;
       width: 100%;
-      padding: 15% 3.9% 3.9%;
+      height: 100%;
       overflow: auto;
-
-      background-color: rgba(#848fac, $alpha: 0.9);
+      visibility: hidden;
+      background-color: #272727;
       opacity: 0;
-
       transition: top 0.3s ease 0s, opacity 0.3s ease 0s;
+
+      &:after {
+        content: "";
+        background-color: #272727;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 75px;
+      }
+
+      @include mq("tablet-small", max) {
+        padding: 115px 36px 10px 55px;
+
+        @media only screen and (max-height: em(699.9, 16)) {
+          padding-top: max(75px, vh(115));
+        }
+      }
+
+      @include mq("tablet-small") {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
       &._open {
         top: 0;
-
         opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -74,14 +241,12 @@
   &__icon {
     display: none;
 
-    @include mq("tablet-small", max) {
+    @include mq("desktop", max) {
       position: relative;
       z-index: 5;
-
       display: block;
-      width: 30px;
-      height: 18px;
-
+      width: rem(18);
+      height: rem(12);
       cursor: pointer;
 
       & span,
@@ -93,7 +258,8 @@
         width: 100%;
         height: 10%;
 
-        background-color: var(--semi-color);
+        background-color: #fff;
+        border-radius: 10px;
 
         transition: all 0.3s ease 0s;
 
@@ -110,7 +276,6 @@
 
       & span {
         top: 50%;
-
         transform: scale(1) translate(0, -50%);
       }
 
@@ -122,59 +287,245 @@
         &::before {
           top: 50%;
 
-          transform: rotate(-45deg) translate(0, -50%);
+          transform: rotate(-45deg) translateY(-50%);
         }
 
         &::after {
           bottom: 50%;
 
-          transform: rotate(45deg) translate(0, 50%);
+          transform: rotate(45deg) translateY(50%);
         }
       }
     }
   }
 
   &__list {
-    @include mq("tablet-small") {
+    @include mq("desktop") {
       display: flex;
       align-items: center;
     }
 
-    @include mq("tablet-small", max) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    @include mq("tablet-small", range,"desktop") {
+      width: max-content;
+    }
 
-      text-align: center;
+    @include mq("tablet-small", max) {
+      padding: 0 0 rem(60) 0;
+      margin: 0 0 rem(35) 0;
+      border-bottom: 1px solid #fcd54c;
+
+      @media only screen and (max-height: em(699.9, 16)) {
+        padding: 0 0 vh(60) 0;
+        margin: 0 0 vh(35) 0;
+      }
+
+      @media only screen and (max-height: em(399.9, 16)) {
+        padding: 0;
+      }
     }
   }
 
   &__item {
+    width: max-content;
+    @include mq("tablet-small") {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: #fcd54c;
+        transition: width 0.4s ease 0s;
+      }
+
+      @media (any-hover: hover) {
+        &:hover {
+          & .menu__link {
+            color: #fcd54c;
+          }
+
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    @include mq("desktop") {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 10px;
+
+      @media (any-hover: hover) {
+        &:hover {
+          .arrow {
+            transform: rotate(90deg);
+          }
+
+          .sublist {
+            display: block;
+            opacity: 1;
+          }
+        }
+      }
+    }
+
     @include mq("tablet-small", max) {
-      width: 100%;
-      padding: rem(15) 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 20px;
     }
 
     & + & {
-      @include mq("tablet-small") {
-        margin: 0 0 0 rem(32);
+      margin: rem(20) 0 0 0;
+
+      @media only screen and (max-height: em(699.9, 16)) {
+        margin: vh(20) 0 0;
+      }
+
+      @include mq("desktop") {
+        margin: 0 0 0 rem(20);
       }
     }
   }
 
   &__link {
-    @include font-source-sans(rem(16), 1.1875, 500, var(--semi-color));
+    font-family: $font-secondary;
+    @include font-source-sans(rem(36), 1.2, 600, #fff);
+    text-transform: uppercase;
+    transition: color 0.3s ease 0s;
 
-    @media (any-hover: hover) {
-      &:hover {
-        color: var(--main-color);
+    @media only screen and (max-height: em(699.9, 16)) {
+      font-size: max(rem(20), vh(36));
+    }
+
+    @include mq("desktop") {
+      font-size: rem(14);
+    }
+
+    &._active {
+      color: #fcd54c;
+    }
+  }
+
+  &__arrow {
+    @include mq("tablet-small", range, "desktop") {
+      position: absolute;
+      top: rem(12);
+      margin: 0 0 0 rem(30);
+    }
+
+    &._active {
+      & + .sublist {
+        margin-top: rem(10);
+        opacity: 1;
+      }
+    }
+  }
+
+  &__sublist {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+
+    @include mq("desktop") {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      display: none;
+      padding: 20px 0 0 0;
+      width: max-content;
+    }
+
+    @include mq("desktop", max) {
+      flex: 0 0 83%;
+      margin: auto;
+      max-height: 0;
+      padding: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.3s ease-out;
+      will-change: max-height;
+    }
+  }
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-bottom: rem(7) solid transparent;
+  border-top: rem(7) solid transparent;
+  border-left: rem(7) solid #fff;
+  transition: all 0.3s ease-out;
+
+  @include mq("desktop") {
+    border-width: rem(5);
+  }
+
+  &._active {
+    transform: rotate(90deg);
+  }
+}
+
+.sublist {
+  &__item {
+    padding: rem(5);
+    background-color: #272727;
+    transition: background-color 0.3s ease-out;
+
+    @include mq("tablet-small") {
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: #fcd54c;
+
+          & .sublist__link {
+            color: #272727;
+          }
+        }
       }
     }
 
-    @include mq("tablet-small", max) {
-      color: #fff;
-      font-size: rem(18);
+    @include mq("desktop") {
+      border: 1px solid #979797;
+
+      &:not(:first-child) {
+        border-top: none;
+      }
+
+      &:not(:last-child) {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__link {
+    @include font-source-sans(rem(14), 1.2, 600, #fff);
+    font-family: $font-secondary;
+  }
+}
+
+.toggle-lang {
+  display: flex;
+  gap: 10px;
+
+  &__btn {
+    font-family: $font-secondary;
+    @include font-source-sans(rem(14), 1.2, 600, #929292);
+    text-transform: uppercase;
+    transition: all 0.4s ease 0s;
+
+    @include mq("tablet-small") {
+      @media (any-hover: hover) {
+        &:hover {
+          color: rgba($color: #fcd54c, $alpha: .8);
+        }
+      }
+    }
+    &.active {
+      color: #fcd54c;
     }
   }
 }

@@ -1,17 +1,33 @@
 header.header#header
-	.header__container
-		a.header__logo.logo(href="#")
-			svg.logo__icon
-				use(xlink:href="#logo")
-		nav.header__menu.menu
-			button.menu__icon(type="button", aria-label="Open menu")
-				span
-			.menu__body
-				ul.menu__list
-					li.menu__item
-						a.menu__link(href="#") Rooms
-					li.menu__item
-						a.menu__link(href="#") Reservation
-					li.menu__item
-						a.menu__link(href="#") Contacs
-		a.header__link.page-link(href="#") Get Started
+  .header__inner
+    a.header__logo.logo(href="#", style="background-image: url('./img/Header/Rectangle 14.png')")
+      p.logo__title DubaiRealty
+      p.logo__subtitle Real Estate
+    .header__body
+      nav.header__menu.menu
+        button.menu__icon(type="button", role="button", aria-label="Open menu")
+          span
+        .menu__body
+          ul.menu__list
+            li.menu__item
+              a.menu__link(href="#") Buy
+              span.menu__arrow.arrow
+              ul.menu__sublist.sublist
+                li.sublist__item
+                  a.sublist__link(href="#") Category number one
+                li.sublist__item
+                  a.sublist__link(href="#") Apartments in Dubai
+                li.sublist__item
+                  a.sublist__link(href="#") Category number twenty five
+            li.menu__item
+              a.menu__link(href="#") Blog
+            li.menu__item
+              a.menu__link(href="#") Adout
+            li.menu__item
+              a.menu__link(href="#") Contact
+          button.header__btn.open-btn(type="button", role="button") Book a consultation
+          .header__box
+            .header__toggle-lang.toggle-lang
+              button.toggle-lang__btn(type="button", role="button") EN
+              button.toggle-lang__btn(type="button", role="button") RU
+            a.header__phone(href="tel:+55555552510") +5 (555) 555-25-10
