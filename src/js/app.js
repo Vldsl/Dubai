@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Sublist
+// HeaderSublist
 const arrows = document.querySelectorAll('.arrow');
 if (arrows.length > 0 && document.documentElement.offsetWidth <= 1919.9) {
   arrows.forEach(arrow => {
@@ -92,10 +92,9 @@ if (arrows.length > 0 && document.documentElement.offsetWidth <= 1919.9) {
 // Modal
 const modal = document.querySelector('.modals');
 if (modal) {
-  const openBtn = document.querySelector('.open-btn');
+  const openBtns = document.querySelectorAll('.open-btn');
   const closeBtn = document.querySelector('.modal__btn');
   const modalForm = document.querySelector('.modal__form');
-  console.log(openBtn, closeBtn, modalForm)
 
   let disableScroll = function () {
     let pagePosition = window.scrollY;
@@ -111,11 +110,12 @@ if (modal) {
     window.scroll({ top: pagePosition, left: 0 });
     document.body.removeAttribute('data-position');
   }
-
-  openBtn.addEventListener('click', () => {
-    modal.style.display = "block";
-    disableScroll();
-  });
+  openBtns.forEach(item => {
+    item.addEventListener('click', () => {
+      modal.style.display = 'block';
+      disableScroll();
+    });
+  })
 
   closeBtn.addEventListener('click', () => {
     modal.style.display = "none";
@@ -264,3 +264,24 @@ if (modal) {
 // //     el.classList.toggle('active');
 // //   });
 // // });
+
+// Footer Sublist
+const menuFooterItems = document.querySelectorAll('.menu-footer__item');
+if (menuFooterItems.length > 0 && document.documentElement.offsetWidth <= 699.9) {
+  menuFooterItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      const self = e.currentTarget;
+      // const menuLink = self.previousElementSibling;
+      const sublist = self.querySelector('.sublist-footer')
+
+      self.classList.toggle('_active');
+      // menuLink.classList.toggle('_active');
+
+      if (self.classList.contains('_active')) {
+        sublist.style.maxHeight = sublist.scrollHeight + "px"
+      } else {
+        sublist.style.maxHeight = null;
+      }
+    });
+  });
+}
