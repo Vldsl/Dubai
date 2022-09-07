@@ -1,0 +1,43 @@
+.intro
+  .intro__content
+    .intro__body(style="background-image: url('./img/Intro/intro-img-1.jpg')")
+      ul.intro__social.social
+        li.social__item
+          a.social__link(href="")
+            svg.social__icon
+              use(xlink:href="#icon3")
+        li.social__item
+          a.social__link(href="")
+            svg.social__icon
+              use(xlink:href="#icon1")
+        li.social__item
+          a.social__link(href="")
+            svg.social__icon
+              use(xlink:href="#youtube")
+        li.social__item
+          a.social__link(href="")
+            svg.social__icon
+              use(xlink:href="#instagram")
+        li.social__item
+          a.social__link(href="")
+            svg.social__icon
+              use(xlink:href="#icon2")
+      .intro__container
+        .intro__info(style="background-image: url('./img/Intro/Rectangle.png')")
+          p.intro__suptitle Lorem ipsum
+          h1.intro__title Welcome home <br> <span>to</span> luxury
+          a.intro__link(href="") Book a consultation
+      .intro__bottom
+        .intro__control.control
+          button.control__btn.control__btn_prev._active(type="button", role="button") Prev
+          button.control__btn.control__btn_next._active(type="button", role="button") Next
+    .intro__pagination.pagination
+      button.pagination__item._active(type="button", role="button", data-src="./img/Intro/intro-img-1.jpg")
+        p.pagination__count 01
+        p.pagination__info Lorem Ipsum Dolorem apset
+      button.pagination__item(type="button", role="button", data-src="./img/Intro/intro-img-2.jpg")
+        p.pagination__count 02
+        p.pagination__info Lorem Ipsum Dolorem apset
+      button.pagination__item(type="button", role="button", data-src="./img/Intro/intro-img-3.jpg")
+        p.pagination__count 03
+        p.pagination__info Lorem Ipsum Dolorem apset

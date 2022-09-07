@@ -1,0 +1,306 @@
+.intro {
+  padding: 0 35px;
+
+  @include mq("tablet-small") {
+    padding: 0 40px;
+  }
+
+  @include mq("tablet-wide", range, "desktop") {
+    height: 80vh;
+  }
+
+  @include mq("desktop") {
+    padding: 0 60px;
+  }
+
+  &__content {
+    height: 100%;
+    @include mq("tablet-small", max) {
+      padding-bottom: 5px;
+      border-bottom: 1px solid #fcd54c;
+    }
+  }
+
+  &__body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 26px 19px 0 23px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: background-image .2s ease-in;
+
+    @include mq("tablet-small") {
+      padding: 40px 0 0 30px;
+    }
+
+    @include mq("tablet-wide") {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @include mq("desktop") {
+      padding: 280px 0 0 30px;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-bottom: rem(60);
+    padding: 0;
+
+    @include mq("tablet-wide") {
+      flex: 1 1 100%;
+      margin-bottom: rem(35);
+    }
+
+    @include mq("desktop") {
+      margin-bottom: rem(160);
+    }
+  }
+
+  &__info {
+    padding: 14px 0 11px 15px;
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: contain;
+
+    @include mq("tablet-small") {
+      padding: 45px 0 50px 30px;
+      width: 70%;
+    }
+
+    @include mq("desktop") {
+      padding: 45px 0 50px 30px;
+    }
+  }
+
+  &__suptitle {
+    margin: 0 0 rem(7) 0;
+    font-size: rem(10);
+    line-height: math.div(12, 10);
+    text-transform: uppercase;
+
+    @include mq("tablet-small") {
+      margin: 0 0 rem(3) 0;
+    }
+
+    @include mq("desktop") {
+      margin: 0 0 rem(20) 0;
+      font-size: rem(16);
+      line-height: math.div(19, 16);
+    }
+  }
+
+  &__title {
+    margin: 0 0 rem(60) 0;
+    font-weight: 700;
+    font-size: rem(30);
+    font-family: "Space Grotesk";
+    line-height: math.div(38, 30);
+    text-transform: capitalize;
+
+    & span {
+      color: #fcd54c;
+    }
+
+    @include mq("tablet-small") {
+      margin: 0 0 rem(8) 0;
+      font-size: rem(50);
+      line-height: math.div(64, 50);
+    }
+
+    @include mq("desktop") {
+      margin: 0 0 rem(45) 0;
+      font-size: rem(96);
+      line-height: math.div(100, 96);
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding: 0 rem(10) 0 0;
+    color: #fff;
+    font-weight: 700;
+    font-size: rem(12);
+    line-height: math.div(14, 12);
+
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      width: 10px;
+      height: 10px;
+      border-right: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+      transform: translateY(-50%) rotate(-45deg);
+      content: "";
+
+      @include mq("desktop") {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @include mq("tablet-small") {
+      font-size: rem(16);
+      line-height: math.div(19, 16);
+    }
+
+    @include mq("desktop") {
+      padding: 0 rem(30) 0 0;
+      font-size: rem(20);
+      line-height: math.div(23, 20);
+    }
+  }
+
+  &__social {
+    @include mq("tablet-small", max) {
+      display: none;
+    }
+
+    @include mq("tablet-small") {
+      top: 20px;
+      right: 120px;
+    }
+
+    @include mq("tablet-small") {
+      position: absolute;
+      top: 40px;
+      right: 20px;
+      flex-direction: column;
+    }
+  }
+
+  &__bottom {
+    @include mq("tablet-small") {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include mq("tablet-wide") {
+      gap: 95px;
+    }
+  }
+
+  &__control {
+    @include mq("tablet-wide") {
+      margin-left: auto;
+    }
+  }
+
+  &__pagination {}
+}
+
+.control {
+  &__btn {
+    padding: 0 rem(10) 0 0;
+    font-weight: 700;
+    font-size: rem(10);
+    font-family: $font-secondary;
+    line-height: math.div(24, 10);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.6;
+
+    & + & {
+      padding: 0 0 0 rem(10);
+      border-left: 1px solid #fff;
+
+      @include mq("desktop") {
+        padding: 0 0 0 rem(20);
+      }
+    }
+
+    &._active {
+      opacity: 1;
+    }
+
+    @include mq("desktop") {
+      padding: 0 rem(20) 0 0;
+      font-size: rem(20);
+      line-height: math.div(24, 20);
+    }
+
+    &_prev {}
+
+    &_next {}
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  background-color: #272727;
+
+  @include mq("tablet-small") {
+    width: 82%;
+    padding: 10px 10px 10px 30px;
+  }
+
+  @include mq("desktop") {
+    width: 60%;
+    padding: 60px 0 40px 60px;
+  }
+
+  &__item {
+    text-align: left;
+
+    &._active {
+      .pagination__count {
+        color: #fcd54c;
+      }
+    }
+
+    @include mq("phone-wide") {
+      flex: 0 1 26.2%;
+    }
+
+    @include mq("tablet-small") {
+      display: flex;
+      flex: 0 1 29.3%;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @include mq("desktop") {
+      flex: 0 1 25%;
+      gap: 40px;
+    }
+  }
+
+  &__count {
+    font-weight: 700;
+    font-size: 40px;
+    font-family: $font-secondary;
+    line-height: 50px;
+
+    @include mq("desktop") {
+      font-size: rem(60);
+      line-height: math.div(24, 60);
+    }
+  }
+
+  &__info {
+    font-weight: 600;
+    font-size: rem(10);
+    font-family: $font-primary;
+    line-height: math.div(12, 10);
+
+    @include mq("tablet-small") {
+      font-size: rem(12);
+      line-height: math.div(14, 12);
+    }
+
+    @include mq("desktop") {
+      font-size: rem(16);
+      line-height: math.div(26, 16);
+    }
+  }
+}
