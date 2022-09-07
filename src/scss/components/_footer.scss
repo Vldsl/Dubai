@@ -13,7 +13,7 @@
     padding: 70px 60px 0;
   }
 
-  &__inner {
+  &__content {
 
   }
 
@@ -238,7 +238,7 @@
     padding: 30px 60px;
   }
 
-  &__inner {
+  &__content {
     display: flex;
     align-items: center;
     text-align: center;
@@ -254,19 +254,4 @@
   &__rights {}
 
   &__social {}
-}
-
-.social {
-  display: flex;
-  gap: 30px;
-  &__item {}
-
-  &__link {}
-
-  &__icon {
-    display: block;
-    width: rem(20);
-    height: rem(17);
-    fill: var(--semi-color);
-  }
 }

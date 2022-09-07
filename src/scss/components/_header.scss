@@ -16,19 +16,23 @@
   @include mq("tablet-small") {
     padding: 15px 40px 20px;
   }
+
   @include mq("desktop") {
     padding: 20px 60px 26px;
   }
 
   &.fixed {
     position: fixed;
-    padding: rem(10) 0;
+    // padding: rem(10) 0;
   }
 
-  &__inner {
+  &__content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @include mq("desktop") {
+      gap: 20px;
+    }
   }
 
   &__logo {
@@ -489,5 +493,31 @@
     &.active {
       color: #fcd54c;
     }
+  }
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+
+  &__item {}
+
+  &__link {
+    @include mq("tablet-small") {
+      @media (any-hover: hover) {
+        &:hover {
+          & .social__icon {
+            fill: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  &__icon {
+    display: block;
+    width: rem(20);
+    height: rem(17);
+    fill: #e8e8e8;
   }
 }
